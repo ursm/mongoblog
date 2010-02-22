@@ -1,0 +1,5 @@
+= MongoBlog
+
+ $ gem install bundler --source http://gemcutter.org
+ $ bundle install
+ $ ruby blog.rb

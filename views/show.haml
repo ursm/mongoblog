@@ -1,0 +1,18 @@
+%ul
+  - @comment.errors.full_messages.each do |e|
+    %li= e
+
+%article
+  != haml :_post, :locals => {:post => @post}, :layout => false
+
+  %form(action="/posts/#{@post.id}/comments" method='post')
+    %dl#comments
+      - @post.comments.each do |comment|
+        %dt= comment.author
+        %dd= comment.content
+      %dt
+        %input(type='text' name='comment[author]'){:value => @comment.author}
+      %dd
+        %input(type='text' name='comment[content]'){:value => @comment.content}
+
+    %input(type='submit' value='Add Comment')

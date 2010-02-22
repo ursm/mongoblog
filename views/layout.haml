@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %meta(charset='utf-8')
+    %title= [@title, 'MongoBlog'].compact.join(' - ')
+    %link(rel='stylesheet' href='/style.css' type='text/css')
+  %body
+    %header
+      %h1
+        %a(href='/') MongoBlog
+      %nav
+        %ul
+          %li
+            %a(href='/posts/new') New Post
+
+    #content!= yield
