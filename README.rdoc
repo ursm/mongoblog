@@ -1,5 +1,9 @@
 = MongoBlog
+gihyo.jp の Ruby Freaks Lounge で取り上げたサンプルアプリケーションです。
 
- $ gem install bundler --source http://gemcutter.org
+== 動かし方
+あらかじめ MongoDB を起動しておいてください。
+
+ $ gem install bundler
  $ bundle install
  $ ruby blog.rb
