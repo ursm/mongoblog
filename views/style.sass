@@ -1,19 +1,13 @@
-html
-  :background-color white
-  :height 100%
-
 body
-  :max-width 960px
-  :margin 0 auto
-  :background-color #eee
-  :height 100%
+  :margin 0
+  :background-color = yellow + #ccc
 
 header
   :position relative
+  :background-color = red - #666
 
   h1
-    :background-color = red - #666
-    :padding 0.3em 0.5em
+    :padding 0.5em 0.8em
     :margin 0
 
     a
@@ -32,17 +26,81 @@ header
       li
         :display inline-block
 
+        a
+          :color white
+
 #content
-  :padding 1em
-  :padding-top 0
+  :margin 2em 5%
+
+.errors
+  :font-weight bold
+  :color red
 
 article
   h2
+    :border-bottom thin solid silver
+    :margin-bottom 0.3em
+
     a
       :text-decoration none
 
-  ul.tags
-    :padding 0
+      &, &:visited
+        :color = red - #666
+
+  p.content
+    :border thin solid silver
+    :margin 0
+    :padding 1em
+    :background-color white
+
+  ul.meta
+    :margin-top 0.2em
+    :padding-left 0
+    :text-align right
+    :font-size smaller
+    :color gray
 
     li
+      :margin-left 0
       :display inline-block
+
+      &:not(:last-child):after
+        :content ' | '
+
+  dl.comments
+    dt
+      :font-weight bold
+
+    dd
+      :margin-left 1em
+
+  form
+    dl
+      dt
+        :font-weight bold
+
+      dd
+        :margin-left 0
+
+form.post
+  dt
+    :margin-top 0.6em
+    :font-weight bold
+
+  dd
+    :margin-left 0
+
+  input[type=text]
+    :width 32em
+
+  textarea
+    :width 32em
+    :height 12em
+
+form.comment
+  input[type=text]
+    :width 8em
+
+  textarea
+    :width 24em
+    :height 6em

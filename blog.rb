@@ -18,13 +18,6 @@ get '/' do
   haml :posts
 end
 
-get '/tags/:tag' do |tag|
-  @posts = Post.all(:tags => tag)
-
-  @title = "Tag: #{tag}"
-  haml :posts
-end
-
 get '/posts/new' do
   @post = Post.new
 
@@ -38,6 +31,7 @@ post '/posts' do
   if @post.save
     redirect "/posts/#{@post.id}"
   else
+    @title = 'New Post'
     haml :new
   end
 end
@@ -57,6 +51,8 @@ post '/posts/:id/comments' do |id|
   if @comment.save
     redirect "/posts/#{@post.id}"
   else
+    @post.comments.reload
+
     @title = @post.title
     haml :show
   end

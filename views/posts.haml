@@ -1,2 +1,9 @@
 - @posts.each do |post|
-  %article!= haml :_post, :locals => {:post => post}, :layout => false
+  %article
+    %h2
+      %a(href="/posts/#{post.id}")= post.title
+    %p.content= post.content
+
+    %ul.meta
+      %li Posted on #{post.created_at.to_s(:db)}
+      %li #{post.comments.count} Comments

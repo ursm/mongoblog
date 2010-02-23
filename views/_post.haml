@@ -1,9 +1,0 @@
-%h2
-  %a(href="/posts/#{post.id}")= post.title
-%p= post.content
-%ul.tags
-  - post.tags.each do |tag|
-    %li
-      %a(href="/tags/#{tag}" rel='tag')= tag
-.posted_on Posted on #{post.created_at.to_s(:db)}
-.comments #{post.comments.count} Comments

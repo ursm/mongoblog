@@ -1,18 +1,28 @@
-%ul
+%ul.errors
   - @comment.errors.full_messages.each do |e|
     %li= e
 
 %article
-  != haml :_post, :locals => {:post => @post}, :layout => false
+  %h2
+    %a(href="/posts/#{post.id}")= post.title
+  %p.content= post.content
 
-  %form(action="/posts/#{@post.id}/comments" method='post')
-    %dl#comments
-      - @post.comments.each do |comment|
-        %dt= comment.author
-        %dd= comment.content
-      %dt
-        %input(type='text' name='comment[author]'){:value => @comment.author}
+  %ul.meta
+    %li Posted on #{post.created_at.to_s(:db)}
+    %li #{post.comments.count} Comments
+
+  %dl.comments
+    - @post.comments.each do |comment|
+      %dt= comment.name
+      %dd= comment.comment
+
+  %form.comment(action="/posts/#{@post.id}/comments" method='post')
+    %dl
+      %dt Name
       %dd
-        %input(type='text' name='comment[content]'){:value => @comment.content}
+        %input(type='text' name='comment[name]'){:value => @comment.name}
+      %dt Comment
+      %dd
+        %textarea(name='comment[comment]' rows=8 cols=48)= @comment.comment
 
     %input(type='submit' value='Add Comment')

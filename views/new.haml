@@ -2,7 +2,7 @@
   - @post.errors.full_messages.each do |e|
     %li= e
 
-%form(action='/posts' method='post')
+%form.post(action='/posts' method='post')
   %dl
     %dt Title
     %dd
@@ -10,8 +10,5 @@
     %dt Content
     %dd
       %textarea(name='post[content]')!= @post.content
-    %dt Tags
-    %dd
-      %input(name='post[tags_with_spaces]' type='text'){:value => @post.tags_with_spaces}
 
   %input(type='submit' value='Post')
